@@ -1,0 +1,36 @@
+p {
+  color: red;
+  font-size: x-large;
+ }
+
+.green {
+color: green;
+}
+
+.orange {
+color: orange;
+}
+
+#navy {
+color: navy;
+}
+#yellow {
+color: yellow;
+}
+#salmon {
+color: salmon;
+}
+
+h2 {
+font-family: bold;
+}
+
+a {
+  color: green
+}
+
+@media (max-width: 2000px) {
+  h1 {
+    font-size: 10vh;
+  }
+ }

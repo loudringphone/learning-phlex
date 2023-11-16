@@ -1,0 +1,10 @@
+//= link_tree ../images
+//= link_directory ../stylesheets .css
+//= link_tree ../../javascript .js
+//= link_tree ../../../vendor/javascript .js
+//= link mailer/styles.css
+//= link audio1.mov
+//= link audio2.mov
+//= link audio3.mov
+//= link audio4.mov
+//= link audio5.mov
