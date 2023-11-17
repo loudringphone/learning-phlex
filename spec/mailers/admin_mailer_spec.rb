@@ -6,7 +6,7 @@ RSpec.describe AdminMailer, type: :mailer do
 
     it 'sends a welcome email' do
       mail = AdminMailer.welcome(user: user)
-      Premailer::Rails::Hook.perform(mail)
+      # Premailer::Rails::Hook.perform(mail)
       expect(mail.subject).to eq('Welcome!')
       expect(mail.to).to eq([user.email])
       expect(mail.from).to eq(['from@example.com'])

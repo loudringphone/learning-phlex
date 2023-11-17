@@ -4,6 +4,7 @@ class ApplicationLayout < ApplicationView
   include Phlex::Rails::Layout
   include Phlex::Rails::Helpers::LinkTo
   include Phlex::Rails::Helpers::Routes
+  include Phlex::Rails::Helpers::ContentFor
 
   def template(&block)
     doctype
@@ -15,15 +16,22 @@ class ApplicationLayout < ApplicationView
         csp_meta_tag
         csrf_meta_tags
         stylesheet_link_tag 'application', data_turbo_track: 'reload'
+        yield(:styles) if content_for?(:styles)
         javascript_importmap_tags
       end
 
-      body do
-        nav(id: 'navbar') do
+      body(data_controller: 'app') do
+        nav(class: 'navbar') do
           link_to 'Home', home_path
           link_to 'Search', search_path
+          link_to 'Search2', search2_path
           link_to 'About', about_path
-          link_to 'Mailers', 'rails/mailers', target: '_blank' if Rails.env.development?
+          if Rails.env.development?
+            a(class: 'admin-mailer', href: mailers_path) { 'Mailers' }
+            AdminMailer.mails.each do |mail|
+              a(class: 'mail', href: "#{mailers_path}/#{mail}") { mail.capitalize }
+            end
+          end
         end
         main(&block)
       end

@@ -13,12 +13,18 @@
  *= require_tree .
  *= require_self
  */
-
- #navbar {
+  body {
+    min-height: 100vh;
+    min-width: 100vw;
+  }
+ .navbar {
   display: flex;
   gap: 10px;
  }
-
+ .mail {
+  display: none;
+  color: red;
+ }
  #reset {
   border-style: none;
   color: transparent;

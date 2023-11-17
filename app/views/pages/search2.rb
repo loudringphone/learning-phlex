@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 
-class Pages::Search < ApplicationView
+class Pages::Search2 < ApplicationView
   include Phlex::Rails::Helpers::AssetPath
   include Phlex::Rails::Helpers::ContentFor
   include Phlex::Rails::Helpers::StyleSheetLinkTag
-  include Phlex::Rails::Helpers::JavaScriptImportMapTags
+
   def initialize
-    page_title('Search')
+    page_title('Search2')
   end
 
   def template
@@ -14,15 +14,16 @@ class Pages::Search < ApplicationView
       stylesheet_link_tag 'search', data_turbo_track: 'reload'
     end
 
-    div(data_controller: 'search', data_search_audio_urls: audio_urls.to_json) do
-      h1 { 'Image Search' }
+    div(data_controller: 'search2', data_search2_audio_urls: audio_urls.to_json) do
+      h1(data_action: 'click->search2#search') { 'Image Search2' }
 
-      form(id: 'search') do
+      form(id: 'search', data_action: 'submit->search2#search') do
         label do
           plain ' Search terms: '
           input(
             type: 'search',
             id: 'query',
+            data_search2_target: 'terms',
             required: true,
             autofocus: true,
             placeholder: 'Type your search here...'
@@ -31,9 +32,9 @@ class Pages::Search < ApplicationView
         end
       end
 
-      button(id: 'backTop') { 'Top' }
+      button(id: 'backTop', data_action: 'click->search2#backTop') { 'Top' }
 
-      button(id: 'btnFly') { 'Fly!' }
+      button(id: 'btnFly', data_action: 'click->search2#fly') { 'Fly!' }
 
       div(id: 'images')
     end

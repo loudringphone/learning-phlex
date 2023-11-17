@@ -34,7 +34,6 @@ export default class extends Controller {
         fetch(`${flickrURL}?method=flickr.photos.search&api_key=2f5ac274ecfac5a455f38745704ad084&text=${keywords}&format=json&nojsoncallback=1&page=${page}`)
             .then(response => response.json())
             .then(showImages)
-            .then(info => console.log(info))
             .catch(error => console.error('Error:', error));
     };
 
@@ -44,7 +43,7 @@ export default class extends Controller {
             console.error("Images container not found");
             return;
         }
-
+        pages = results.photos.pages
         const urls = results.photos.photo.map(generateURL);
 
         urls.forEach(function (url) {
@@ -105,7 +104,7 @@ export default class extends Controller {
                             break;
                     }
                     img.classList.add('fly');
-                }, 1000 * (index + 1));
+                }, 1250 * (index + 1));
                 chickenTimeouts.push(chicken)
             });
         });

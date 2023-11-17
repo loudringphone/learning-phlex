@@ -10,4 +10,9 @@ Rails.application.routes.draw do
   get 'home' => 'pages#home', as: :home
   get 'about' => 'pages#about', as: :about
   get 'search' => 'pages#search', as: :search
+  get 'search2' => 'pages#search2', as: :search2
+  if Rails.env.development?
+    get 'mailers' => 'pages#mailers', as: :mailers
+    get 'mailers/:id' => 'pages#mailers'
+  end
 end

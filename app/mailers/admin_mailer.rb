@@ -13,6 +13,18 @@ class AdminMailer < ApplicationMailer
     end
   end
 
+  def portfolio(user:)
+    mail(to: user.email, subject: 'Come see my portfolio!') do |format|
+      format.html do
+        render(Portfolio.new(name: user.name))
+      end
+    end
+  end
+
+  def self.mails
+    instance_methods(false) - ApplicationMailer.instance_methods(false)
+  end
+
   private
 
   def modified_html_with_inject_style(view)

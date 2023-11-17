@@ -40,7 +40,7 @@ gem 'bootsnap', require: false
 
 gem 'css_parser'
 gem 'phlex-rails'
-gem 'premailer-rails'
+# gem 'premailer-rails'
 gem 'pry'
 
 group :development, :test do

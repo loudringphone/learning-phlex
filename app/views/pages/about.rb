@@ -8,10 +8,10 @@ class Pages::About < ApplicationView
   def template
     card_styles
 
-    h1 { 'Pages about' }
+    h1 { 'About page' }
 
     p(class: 'orange') { 'ABOUTABOUTABOUTABOUT' }
-    p(class: 'lightcoral') { 'Style tag in Phlex' }
+    p { 'Style tag in Phlex' }
     p(class: 'lightcoral', style: 'color: black') { 'inline style' }
   end
 
@@ -22,7 +22,7 @@ class Pages::About < ApplicationView
   def card_styles
     style do
       <<~CSS
-        h1 {color: blueviolet}
+        p {color: blueviolet}
       CSS
     end
   end

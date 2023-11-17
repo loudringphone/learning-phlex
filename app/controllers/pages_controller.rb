@@ -14,4 +14,13 @@ class PagesController < ApplicationController
   def search
     render Pages::Search.new
   end
+
+  def search2
+    render Pages::Search2.new
+  end
+
+  def mailers
+    id = params[:id]
+    render Pages::Mailers.new(id: id)
+  end
 end
